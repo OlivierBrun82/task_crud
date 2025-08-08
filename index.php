@@ -1,10 +1,17 @@
 <?php
 require_once 'config/database.php';
 
-    // echo"afficher les task";
+
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+        $pdo = dbConnexion();
+        $sql = "SELECT * FROM Task_Crud WHERE id = ?";
+      
 
 
+    }
 
+  var_dump($pdo);
 ?>
 
 
