@@ -4,11 +4,22 @@ require_once 'config/database.php';
 //recupere les données du formulaire si elles sont envoyé en post 
     if ($_SERVER["REQUEST_METHOD"] === "POST"){
         $title = trim(htmlspecialchars($_POST["title"]) ?? '');
-        $desc = trim(htmlspecialchars($_POST["desc"]) ?? '');
-        $priorityChoice = (($_POST["priorityChoice"]));
-    }
+        $description = trim(htmlspecialchars($_POST["description"]) ?? '');
+        $priority = (($_POST["priority"]));
 
-    var_dump($priorityChoice);
+
+//logique de traitement en db
+    $pdo = dbConnexion();
+// préparation des données à insérer
+    $insertTask = $pdo->prepare("
+        INSERT INTO tasks (title, description, priority)
+        VALUES (?, ?, ?)
+    ");
+// insertion des données en db
+    $insertTask->execute([$title, $description, $priority]);
+    
+    $message = "La tâche à été crée avec succè";
+    }
 ?>
 
 <!DOCTYPE html>
@@ -32,10 +43,10 @@ require_once 'config/database.php';
                   </div>
                     <label for="title">Titre</label>
                     <input type="text" name="title" id="title" required placeholder="Entrez le nom de votre tâche">
-                    <label for="desc">Description</label>
-                    <input type="text" name="desc" id="desc" required placeholder="Entrez la description de votre tâche">
+                    <label for="description">Description</label>
+                    <input type="text" name="description" id="description" required placeholder="Entrez la description de votre tâche">
                     <label for="priority">Priorité</label>
-                    <select name="priorityChoice" id="priorityChoice">
+                    <select name="priority" id="priority">
                         <option value="">--Choissez la priorité--</option>
                         <option value="basse">Basse</option>
                         <option value="moyenne">Moyenne</option>

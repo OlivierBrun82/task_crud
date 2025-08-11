@@ -1,6 +1,6 @@
 <?php
 require_once 'config/database.php';
-
+// function dbConnexion()
 
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
