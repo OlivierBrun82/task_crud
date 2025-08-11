@@ -6,11 +6,11 @@
 function dbConnexion() {
     $host = "localhost";
         //  Le nom de la DB
-    $dbname = "user";
+    $dbname = "Exo_db";
         //  Identifiant de connexion
     $username = "root";
-        //  password
-    $password = "*KLp4osj&3PC!29^$^tq%64Q7z7$2i$^";
+        //  password laptop : "*KLp4osj&3PC!29^$^tq%64Q7z7$2i$^"
+    $password = "76223&e6M37Gkz@@*C2M^D^*cz*C#6tR";
         // port
     $port= 80;
         // charset
